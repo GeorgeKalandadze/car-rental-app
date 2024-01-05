@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CarRequest;
+use App\Http\Resources\CarResource;
 use App\Models\Car;
 use App\Models\CarImage;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class CreateCarController extends Controller
 
             DB::commit();
             $car->load('carImages');
-            return response()->json($car);
+            return new CarResource($car);
         } catch (Exception $exception) {
             DB::rollBack();
             throw $exception;
