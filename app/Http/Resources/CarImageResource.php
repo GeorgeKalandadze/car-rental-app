@@ -17,7 +17,7 @@ class CarImageResource extends JsonResource
         return [
             'id' => $this->id,
             'car_id' => $this->car_id,
-            'name' => $this->name,
+            'url' => $this->url,
             'size' => $this->size,
             'type' => $this->type
         ];

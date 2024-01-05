@@ -38,7 +38,7 @@ class CreateCarController extends Controller
 
                 CarImage::create([
                     'car_id' => $car->id,
-                    'name' => env('APP_URL').Storage::url('car_images/' . $imageName),
+                    'url' => env('APP_URL').Storage::url('car_images/' . $imageName),
                     'size' => $image->getSize(),
                     'type' => $image->getMimeType(),
                 ]);

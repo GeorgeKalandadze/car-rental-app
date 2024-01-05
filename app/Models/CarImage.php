@@ -10,7 +10,7 @@ class CarImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'size', 'type', 'car_id'];
+    protected $fillable = ['url', 'size', 'type', 'car_id'];
 
     public function car(): BelongsTo
     {
