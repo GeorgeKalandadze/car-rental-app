@@ -13,18 +13,19 @@ use Tests\TestCase;
 
 class CreateCarTest extends TestCase
 {
+    use DatabaseTransactions;
 
     public function test_create_car_with_images(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs($user);
-
         $imageFiles = [];
         for ($i = 0; $i < 4; $i++) {
             $extension = 'jpg';
             $image = UploadedFile::fake()->create("car_image{$i}.{$extension}");
             $imageFiles[] = $image;
         }
+
 
         $carData = [
             'make' => 'Test Make',

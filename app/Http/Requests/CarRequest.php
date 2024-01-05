@@ -30,7 +30,7 @@ class CarRequest extends FormRequest
             'condition' => 'required',
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
-            'images' => ['required', 'array', 'size:4'],
+            'images' => ['required', 'array', 'max:4'],
             'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ];
     }
