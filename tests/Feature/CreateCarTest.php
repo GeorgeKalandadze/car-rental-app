@@ -27,7 +27,8 @@ class CreateCarTest extends TestCase
         }
 
 
-        $carData = [
+        $carData =[
+            'user_id' => $user->id,
             'make' => 'Test Make',
             'model' => 'Test Model',
             'year' => '2023',

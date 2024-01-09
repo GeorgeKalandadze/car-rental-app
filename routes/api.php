@@ -3,6 +3,7 @@
 use App\Http\Controllers\CreateCarController;
 use App\Http\Controllers\DeleteCarController;
 use App\Http\Controllers\GetCarController;
+use App\Http\Controllers\ToggleFavoriteCarController;
 use App\Http\Controllers\UpdateCarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/cars/{id}', UpdateCarController::class);
     Route::delete('/cars/{car}', DeleteCarController::class);
     Route::get('/cars', GetCarController::class);
+    Route::post('/cars/{car}/toggle-favorite', ToggleFavoriteCarController::class);
 });
 
 require __DIR__.'/auth.php';

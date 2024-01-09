@@ -14,26 +14,22 @@ class UpdateCarTest extends TestCase
 
     public function test_update_car_with_images(): void
     {
-        // Create a user and authenticate
         $user = User::factory()->create();
         Sanctum::actingAs($user);
 
-        // Create a car for updating
         $car = Car::factory()->create();
 
-        // Prepare updated data (assuming only 'make', 'model', 'year', 'images' are updatable fields)
         $updatedData = [
             'make' => 'Updated Make',
             'model' => 'Updated Model',
             'year' => '2024',
-            'price' => 25000, // Set the price
-            'mileage' => 50000, // Set the mileage
-            'condition' => 'used', // Set the condition
-            'brand_id' => 1, // Set the brand ID
-            'category_id' => 1, // Set the category ID
+            'price' => 25000,
+            'mileage' => 50000,
+            'condition' => 'used',
+            'brand_id' => 1,
+            'category_id' => 1,
         ];
 
-        // Simulate file upload for updated images
         $imageFiles = [];
         for ($i = 0; $i < 3; $i++) {
             $extension = 'jpg';
