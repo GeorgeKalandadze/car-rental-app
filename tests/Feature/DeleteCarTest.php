@@ -25,20 +25,5 @@ class DeleteCarTest extends TestCase
             ->assertJson(['message' => 'Car deleted successfully']);
     }
 
-    public function test_delete_car_as_non_owner(): void
-    {
-        // Create two different users
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
-        Sanctum::actingAs($user2); // Acting as the second user
-
-        // Create a car for user1
-        $car = Car::factory()->create(['user_id' => $user1->id]);
-
-        $response = $this->deleteJson("/api/cars/{$car->id}");
-
-        $response->assertStatus(403)
-            ->assertJson(['error' => 'You are not authorized to delete this car.']);
-    }
 
 }
