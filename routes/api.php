@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CreateCarController;
+use App\Http\Controllers\DeleteCarController;
 use App\Http\Controllers\UpdateCarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/car', CreateCarController::class);
     Route::put('/cars/{id}', UpdateCarController::class);
+    Route::delete('/cars/{car}', DeleteCarController::class);
 });
 
 require __DIR__.'/auth.php';

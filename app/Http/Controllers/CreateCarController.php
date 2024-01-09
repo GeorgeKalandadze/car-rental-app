@@ -20,6 +20,7 @@ class CreateCarController extends Controller
     {
         try {
             $data = $request->validated();
+            DB::beginTransaction();
             $car = Car::create([
                 'make' => $data['make'],
                 'model' => $data['model'],
