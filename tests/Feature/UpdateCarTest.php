@@ -18,7 +18,7 @@ class UpdateCarTest extends TestCase
         Sanctum::actingAs($user);
 
         $car = Car::factory()->create();
-
+        $vinCode = 'ABC12347';
         $updatedData = [
             'make' => 'Updated Make',
             'model' => 'Updated Model',
@@ -28,6 +28,7 @@ class UpdateCarTest extends TestCase
             'condition' => 'used',
             'brand_id' => 1,
             'category_id' => 1,
+            'vin' => $vinCode
         ];
 
         $imageFiles = [];

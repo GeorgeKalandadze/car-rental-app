@@ -21,7 +21,14 @@ class Car extends Model
         'condition',
         'brand_id',
         'category_id',
+        'vin',
+        'user_id'
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function brand(): BelongsTo
     {

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Car;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,19 +17,30 @@ class CarFactory extends Factory
      * @return array<string, mixed>
      */
     protected $model = Car::class;
+    protected function generateVinCode(): string
+    {
+        return $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit;
+    }
+
+
 
     public function definition(): array
     {
+        $user = User::factory()->create();
+
         return [
+            'user_id' => $user->id,
             'make' => $this->faker->word,
             'model' => $this->faker->word,
             'year' => $this->faker->numberBetween(2000, 2025),
             'price' => $this->faker->numberBetween(10000, 50000),
             'mileage' => $this->faker->numberBetween(10000, 100000),
             'condition' => $this->faker->randomElement(['new', 'used']),
-            'brand_id' => 4, // Assuming 1-10 brand IDs exist in the database
-            'category_id' => 1, // Assuming 1-5 category IDs exist in the database
-            // Add other fields and their default values as needed...
+            'brand_id' => 4,
+            'category_id' => 1,
+            'vin' => $this->generateVinCode(),
         ];
+
+
     }
 }

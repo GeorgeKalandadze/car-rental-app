@@ -21,6 +21,7 @@ class CreateCarController extends Controller
         try {
             $data = $request->validated();
             DB::beginTransaction();
+            $user = auth()->user();
             $car = Car::create([
                 'make' => $data['make'],
                 'model' => $data['model'],
@@ -30,6 +31,8 @@ class CreateCarController extends Controller
                 'condition' => $data['condition'],
                 'brand_id' => $data['brand_id'],
                 'category_id' => $data['category_id'],
+                'vin' => $data['vin'],
+                'user_id' => $user->id,
             ]);
 
             $images = $data['images'];

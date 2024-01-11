@@ -26,8 +26,9 @@ class CreateCarTest extends TestCase
             $imageFiles[] = $image;
         }
 
+        $vinCode = 'ABC12345';
 
-        $carData =[
+        $carData = [
             'user_id' => $user->id,
             'make' => 'Test Make',
             'model' => 'Test Model',
@@ -37,13 +38,14 @@ class CreateCarTest extends TestCase
             'condition' => 'new',
             'brand_id' => 2,
             'category_id' => 2,
+            'vin' => $vinCode,
             'images' => $imageFiles,
         ];
 
-        $response = $this->postJson('/api/car', $carData);
+        $response = $this->postJson('/api/cars/create', $carData);
 
         $response->assertStatus(201)
-            ->assertJsonStructure(['data' =>[
+            ->assertJsonStructure(['data' => [
                 'id',
                 'make',
                 'model',
@@ -53,6 +55,7 @@ class CreateCarTest extends TestCase
                 'condition',
                 'brand_id',
                 'category_id',
+                'vin_code',
                 'car_images' => [
                     '*' => [
                         'id',
@@ -60,8 +63,8 @@ class CreateCarTest extends TestCase
                         'url',
                         'size',
                         'type',
-                    ]
-                ]
+                    ],
+                ],
             ]]);
     }
 }
