@@ -25,10 +25,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/cars', GetCarController::class);
     Route::post('/cars/create', CreateCarController::class);
     Route::put('/cars/{id}', UpdateCarController::class);
     Route::delete('/cars/{car}', DeleteCarController::class);
-    Route::get('/cars', GetCarController::class);
+
     Route::post('/cars/{car}/toggle-favorite', ToggleFavoriteCarController::class);
 });
 

@@ -14,6 +14,25 @@ class GetCarController extends Controller
     public function __invoke(Request $request)
     {
         $cars = Car::with('brand', 'category', 'carImages');
-        return CarResource::collection($cars);
+
+        if ($request->filled('fuel_type')) {
+            $cars->where('fuel_type', $request->input('fuel_type'));
+        }
+
+        if ($request->filled('name')) {
+            $name = $request->input('name');
+            $cars->where(function ($query) use ($name) {
+                $query->where('make', 'like', "%$name%")
+                    ->orWhere('model', 'like', "%$name%");
+            });
+        }
+
+        if ($request->filled('year')) {
+            $cars->where('year', $request->input('year'));
+        }
+
+        // Retrieve the filtered cars and return as a JSON response
+        $filteredCars = $cars->get();
+        return response()->json($filteredCars);
     }
 }
