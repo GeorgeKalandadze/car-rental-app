@@ -25,7 +25,8 @@ class CarResource extends JsonResource
             'brand_id' => $this->brand_id,
             'category_id' => $this->category_id,
             'car_images' => CarImageResource::collection($this->whenLoaded('carImages')),
-            'vin_code' => $this->vin
+            'vin_code' => $this->vin,
+            'fuel_type' => $this->fuel_type
         ];
     }
 }

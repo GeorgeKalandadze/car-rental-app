@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\FuelType;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -28,7 +29,8 @@ class UpdateCarTest extends TestCase
             'condition' => 'used',
             'brand_id' => 1,
             'category_id' => 1,
-            'vin' => $vinCode
+            'vin' => $vinCode,
+            'fuel_type' => FuelType::toArray()[array_rand(FuelType::toArray())],
         ];
 
         $imageFiles = [];

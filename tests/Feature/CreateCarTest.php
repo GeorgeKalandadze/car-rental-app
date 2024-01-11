@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Enums\FuelType;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -39,6 +40,7 @@ class CreateCarTest extends TestCase
             'brand_id' => 2,
             'category_id' => 2,
             'vin' => $vinCode,
+            'fuel_type' => FuelType::toArray()[array_rand(FuelType::toArray())],
             'images' => $imageFiles,
         ];
 
@@ -56,6 +58,7 @@ class CreateCarTest extends TestCase
                 'brand_id',
                 'category_id',
                 'vin_code',
+                'fuel_type',
                 'car_images' => [
                     '*' => [
                         'id',

@@ -22,7 +22,8 @@ class Car extends Model
         'brand_id',
         'category_id',
         'vin',
-        'user_id'
+        'user_id',
+        'fuel_type'
     ];
 
     public function user(): BelongsTo

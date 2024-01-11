@@ -32,6 +32,7 @@ class CreateCarController extends Controller
                 'brand_id' => $data['brand_id'],
                 'category_id' => $data['category_id'],
                 'vin' => $data['vin'],
+                'fuel_type' => $data['fuel_type'],
                 'user_id' => $user->id,
             ]);
 

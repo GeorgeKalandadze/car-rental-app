@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\FuelType;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -39,6 +40,7 @@ class CarFactory extends Factory
             'brand_id' => 4,
             'category_id' => 1,
             'vin' => $this->generateVinCode(),
+            'fuel_type' => $this->faker->randomElement(FuelType::toArray())
         ];
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\FuelType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CarRequest extends FormRequest
 {
@@ -32,7 +34,8 @@ class CarRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'images' => ['required', 'array', 'max:4'],
             'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'vin' => ['required', 'string', 'min:7', 'regex:/^[a-zA-Z0-9]+$/']
+            'vin' => ['required', 'string', 'min:7', 'regex:/^[a-zA-Z0-9]+$/'],
+            'fuel_type' => ['required',Rule::in(FuelType::toArray())],
         ];
     }
 }
