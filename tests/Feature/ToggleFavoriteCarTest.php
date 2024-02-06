@@ -5,6 +5,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CarLikedNotification;
 
 class ToggleFavoriteCarTest extends TestCase
 {
@@ -12,6 +14,8 @@ class ToggleFavoriteCarTest extends TestCase
 
     public function test_toggle_favorite_car(): void
     {
+        Notification::fake();
+
         $user = User::factory()->create();
         Sanctum::actingAs($user);
 
@@ -26,5 +30,14 @@ class ToggleFavoriteCarTest extends TestCase
         $response->assertStatus(201);
 
         $this->assertNotEquals($initialFavoriteStatus, $newFavoriteStatus, 'Favorite status should change after toggling');
+
+        Notification::assertSentTo(
+            $car->user,
+            CarLikedNotification::class,
+            function ($notification, $channels) use ($user, $car) {
+                return $notification->car->id === $car->id &&
+                    $notification->user->id === $user->id;
+            }
+        );
     }
 }
