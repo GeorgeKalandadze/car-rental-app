@@ -8,6 +8,17 @@ use Illuminate\Validation\Rule;
 
 class CarRequest extends FormRequest
 {
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'make' => strtoupper($this->make),
+            'model' => strtoupper($this->model),
+        ]);
+        $this->merge([
+            'vin' => strtoupper(str_replace(' ', '', $this->vin)),
+        ]);
+    }
     /**
      * Determine if the user is authorized to make this request.
      */
