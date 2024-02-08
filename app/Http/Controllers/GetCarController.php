@@ -31,7 +31,6 @@ class GetCarController extends Controller
             $cars->where('year', $request->input('year'));
         }
 
-        // Retrieve the filtered cars and return as a JSON response
         $filteredCars = $cars->get();
         return response()->json($filteredCars);
     }
