@@ -23,7 +23,6 @@ class CreateCarController extends Controller
             DB::beginTransaction();
             $user = auth()->user();
             $car = Car::create([
-                'make' => $data['make'],
                 'model_id' => $data['model_id'],
                 'year' => $data['year'],
                 'price' => $data['price'],

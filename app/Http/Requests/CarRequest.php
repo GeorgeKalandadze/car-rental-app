@@ -12,10 +12,6 @@ class CarRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'make' => strtoupper($this->make),
-            'model' => strtoupper($this->model),
-        ]);
-        $this->merge([
             'vin' => strtoupper(str_replace(' ', '', $this->vin)),
         ]);
     }
@@ -35,7 +31,6 @@ class CarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'make' => 'required',
             'model_id' => 'required|exists:car_models,id',
             'year' => 'required|numeric',
             'price' => 'required|numeric',
@@ -58,7 +53,6 @@ class CarRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'make.required' => 'მწარმოებლის ველი აუცილებელია.',
             'model.required' => 'მოდელის ველი აუცილებელია.',
             'year.required' => 'წელის ველი აუცილებელია.',
             'year.numeric' => 'წელი უნდა იყოს ციფრებით.',

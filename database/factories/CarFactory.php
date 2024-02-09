@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\FuelType;
+use App\Models\Brand;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -29,15 +30,18 @@ class CarFactory extends Factory
     {
         $user = User::factory()->create();
 
+        $brand = Brand::inRandomOrder()->first();
+
+        $model = $brand->carModels()->inRandomOrder()->first();
+
         return [
             'user_id' => $user->id,
-            'make' => $this->faker->word,
-            'model' => $this->faker->word,
+            'model_id' => $model->id,
             'year' => $this->faker->numberBetween(2000, 2025),
             'price' => $this->faker->numberBetween(10000, 50000),
             'mileage' => $this->faker->numberBetween(10000, 100000),
             'condition' => $this->faker->randomElement(['new', 'used']),
-            'brand_id' => 4,
+            'brand_id' => $brand->id,
             'category_id' => 1,
             'vin' => $this->generateVinCode(),
             'fuel_type' => $this->faker->randomElement(FuelType::toArray())
