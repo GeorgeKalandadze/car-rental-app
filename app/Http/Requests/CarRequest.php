@@ -36,7 +36,7 @@ class CarRequest extends FormRequest
     {
         return [
             'make' => 'required',
-            'model' => 'required',
+            'model_id' => 'required|exists:car_models,id',
             'year' => 'required|numeric',
             'price' => 'required|numeric',
             'mileage' => 'required|numeric',

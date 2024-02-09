@@ -9,12 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('make');
-            $table->string('model');
             $table->integer('year');
             $table->decimal('price', 10, 2);
             $table->integer('mileage');

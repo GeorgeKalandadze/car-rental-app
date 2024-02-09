@@ -24,7 +24,7 @@ class CreateCarController extends Controller
             $user = auth()->user();
             $car = Car::create([
                 'make' => $data['make'],
-                'model' => $data['model'],
+                'model_id' => $data['model_id'],
                 'year' => $data['year'],
                 'price' => $data['price'],
                 'mileage' => $data['mileage'],
