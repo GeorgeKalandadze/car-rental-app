@@ -21,8 +21,7 @@ class UpdateCarTest extends TestCase
         $car = Car::factory()->create();
         $vinCode = 'ABC12347';
         $updatedData = [
-            'make' => 'Updated Make',
-            'model' => 'Updated Model',
+            'model_id' => 2,
             'year' => '2024',
             'price' => 25000,
             'mileage' => 50000,
@@ -46,8 +45,7 @@ class UpdateCarTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure(['data' => [
                 'id',
-                'make',
-                'model',
+                'model_id',
                 'year',
                 'car_images' => [
                     '*' => [

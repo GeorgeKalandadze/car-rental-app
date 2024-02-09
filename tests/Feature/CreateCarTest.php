@@ -31,13 +31,12 @@ class CreateCarTest extends TestCase
 
         $carData = [
             'user_id' => $user->id,
-            'make' => 'Test Make',
-            'model' => 'Test Model',
+            'model_id' => 1,
             'year' => '2023',
             'price' => '25000',
             'mileage' => '20000',
             'condition' => 'new',
-            'brand_id' => 2,
+            'brand_id' => 1,
             'category_id' => 2,
             'vin' => $vinCode,
             'fuel_type' => FuelType::toArray()[array_rand(FuelType::toArray())],
@@ -49,8 +48,7 @@ class CreateCarTest extends TestCase
         $response->assertStatus(201)
             ->assertJsonStructure(['data' => [
                 'id',
-                'make',
-                'model',
+                'model_id',
                 'year',
                 'price',
                 'mileage',
