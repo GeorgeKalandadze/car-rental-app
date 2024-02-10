@@ -7,6 +7,7 @@ enum FuelType: string
     case PETROL = 'Petrol';
     case DIESEL = 'Diesel';
     case ELECTRIC = 'Electric';
+    case GASOLINE = 'Gasoline';
 
     public static function toArray(): array
     {
@@ -14,6 +15,7 @@ enum FuelType: string
             self::PETROL,
             self::DIESEL,
             self::ELECTRIC,
+            self::GASOLINE
         ];
     }
 }

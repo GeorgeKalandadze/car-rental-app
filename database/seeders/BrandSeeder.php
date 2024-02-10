@@ -33,7 +33,6 @@ class BrandSeeder extends Seeder
             'Volvo' => ['Sweden' => ['S60', 'XC60', 'XC90', 'S90', 'V60']],
             'Porsche' => ['Germany' => ['911', 'Cayenne', 'Panamera', 'Macan', 'Taycan']],
             'Land Rover' => ['United Kingdom' => ['Range Rover', 'Discovery', 'Defender', 'Range Rover Sport', 'Range Rover Evoque']],
-            // Add more brands and countries as needed
         ];
 
         foreach ($brands as $brandName => $countries) {

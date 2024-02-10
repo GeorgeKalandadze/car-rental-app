@@ -13,7 +13,7 @@ class GetCarController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $cars = Car::with('brand', 'category', 'carImages');
+        $cars = Car::with('brand', 'category', 'images');
 
         if ($request->filled('fuel_type')) {
             $cars->where('fuel_type', $request->input('fuel_type'));

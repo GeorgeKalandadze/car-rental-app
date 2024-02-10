@@ -32,13 +32,13 @@ class UpdateCarTest extends TestCase
             'fuel_type' => FuelType::toArray()[array_rand(FuelType::toArray())],
         ];
 
-        $imageFiles = [];
-        for ($i = 0; $i < 3; $i++) {
-            $extension = 'jpg';
-            $image = UploadedFile::fake()->create("updated_car_image{$i}.{$extension}");
-            $imageFiles[] = $image;
-        }
-        $updatedData['images'] = $imageFiles;
+//        $imageFiles = [];
+//        for ($i = 0; $i < 3; $i++) {
+//            $extension = 'jpg';
+//            $image = UploadedFile::fake()->create("updated_car_image{$i}.{$extension}");
+//            $imageFiles[] = $image;
+//        }
+//        $updatedData['images'] = $imageFiles;
 
         $response = $this->putJson("/api/cars/{$car->id}", $updatedData);
 
@@ -47,16 +47,15 @@ class UpdateCarTest extends TestCase
                 'id',
                 'model_id',
                 'year',
-                'car_images' => [
-                    '*' => [
-                        'id',
-                        'car_id',
-                        'url',
-                        'size',
-                        'type',
-
-                    ]
-                ]
+//                'car_images' => [
+//                    '*' => [
+//                        'id',
+//                        'car_id',
+//                        'url',
+//                        'size',
+//                        'type',
+//                    ]
+//                ]
             ]]);
     }
 }

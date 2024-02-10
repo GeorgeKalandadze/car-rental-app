@@ -38,8 +38,8 @@ class CarRequest extends FormRequest
             'condition' => 'required',
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
-            'images' => ['required', 'array', 'max:4'],
-            'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+//            'images' => ['required', 'array', 'max:4'],
+//            'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'vin' => ['required', 'string', 'min:7', 'regex:/^[a-zA-Z0-9]+$/'],
             'fuel_type' => ['required',Rule::in(FuelType::toArray())],
         ];

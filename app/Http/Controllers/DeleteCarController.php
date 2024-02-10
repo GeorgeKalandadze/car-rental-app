@@ -19,17 +19,14 @@ class DeleteCarController extends Controller
             }
 
             DB::beginTransaction();
-
-            foreach ($car->carImages as $carImage) {
-                $imageUrl = str_replace(env('APP_URL'), '', $carImage->url);
-                Storage::delete('public/product_images/' . basename($imageUrl));
-                $carImage->delete();
-            }
-
+//            foreach ($car->images as $carImage) {
+//                $imageUrl = str_replace(env('APP_URL'), '', $carImage->url);
+//                Storage::delete('public/images/' . basename($imageUrl));
+//                $carImage->delete();
+//            }
             $car->delete();
 
             DB::commit();
-
             return response()->json(['message' => 'Car deleted successfully']);
         } catch (Exception $exception) {
             DB::rollBack();

@@ -40,9 +40,9 @@ class Car extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function carImages(): HasMany
+    public function images()
     {
-        return $this->hasMany(CarImage::class);
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function favoritedBy(): BelongsToMany

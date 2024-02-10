@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CarImage extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url', 'size', 'type', 'car_id'];
+    protected $fillable = ['url', 'size', 'type', 'imageable_id', 'imageable_type'];
 
-    public function car(): BelongsTo
+    public function imageable()
     {
-        return $this->belongsTo(Car::class);
+        return $this->morphTo();
     }
 }
