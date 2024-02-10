@@ -21,7 +21,7 @@ class CarPartResource extends JsonResource
             'brand' => $this->brand,
             'model' => $this->model,
             'user' => $this->user,
-            'car_images' => CarImageResource::collection($this->whenLoaded('images')),
+            'part_images' => CarImageResource::collection($this->whenLoaded('images')),
             'category' => $this->category,
         ];
     }
