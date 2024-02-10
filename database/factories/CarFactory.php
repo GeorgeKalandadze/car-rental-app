@@ -33,7 +33,6 @@ class CarFactory extends Factory
         $brand = Brand::inRandomOrder()->first();
 
         $model = $brand->carModels()->inRandomOrder()->first();
-
         return [
             'user_id' => $user->id,
             'model_id' => $model->id,

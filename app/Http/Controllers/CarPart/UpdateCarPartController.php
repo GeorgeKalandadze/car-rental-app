@@ -42,7 +42,7 @@ class UpdateCarPartController extends Controller
             }
             $carPart->load('images');
             return new CarPartResource($carPart);
-            
+
         }catch (ValidationException $e) {
             return response()->json($e->errors(), 422);
         } catch (\Exception $e) {
