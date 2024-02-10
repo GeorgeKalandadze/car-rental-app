@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CarPart;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CarPartRequest;
+use App\Http\Resources\CarPartResource;
 use App\Models\CarPart;
 use Illuminate\Http\Request;
 use Exception;
@@ -44,7 +45,7 @@ class CreateCarPartController extends Controller
 
             DB::commit();
             $carPart->load('images');
-            return response()->json($carPart);
+            return new CarPartResource($carPart);
         }catch (Exception $exception){
             Db::rollBack();
             throw $exception;
