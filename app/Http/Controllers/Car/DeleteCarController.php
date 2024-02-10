@@ -13,10 +13,10 @@ class DeleteCarController extends Controller
     public function __invoke(Car $car)
     {
         try {
-            // Check if the authenticated user owns the car
-//            if (auth()->user()->id !== $car->user_id) {
-//                return response()->json(['error' => 'You are not authorized to delete this car.'], 403);
-//            }
+
+            if (auth()->user()->id !== $car->user_id) {
+                return response()->json(['error' => 'You are not authorized to delete this car.'], 403);
+            }
 
             DB::beginTransaction();
             foreach ($car->images as $carImage) {

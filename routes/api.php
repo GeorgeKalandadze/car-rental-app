@@ -7,6 +7,7 @@ use App\Http\Controllers\Car\GetFavoriteCarsController;
 use App\Http\Controllers\Car\ToggleFavoriteCarController;
 use App\Http\Controllers\Car\UpdateCarController;
 use App\Http\Controllers\CarPart\CreateCarPartController;
+use App\Http\Controllers\CarPart\DeleteCarPartController;
 use App\Http\Controllers\CarPart\GetCarPartController;
 use App\Http\Controllers\CarPart\UpdateCarPartController;
 use Illuminate\Http\Request;
@@ -41,6 +42,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/', GetCarPartController::class);
         Route::post('/create', CreateCarPartController::class);
         Route::put('/{id}', UpdateCarPartController::class);
+        Route::delete('/{carPart}', DeleteCarPartController::class);
     });
 });
 
