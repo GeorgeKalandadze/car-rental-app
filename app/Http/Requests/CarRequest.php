@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Condition;
 use App\Enums\FuelType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -35,7 +36,7 @@ class CarRequest extends FormRequest
             'year' => 'required|numeric',
             'price' => 'required|numeric',
             'mileage' => 'required|numeric',
-            'condition' => 'required',
+            'condition' => ['required',Rule::in(Condition::toArray())],
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
             'images' => ['required', 'array', 'max:4'],

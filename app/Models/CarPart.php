@@ -11,9 +11,22 @@ class CarPart extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'condition',
+        'brand_id',
+        'model_id',
+        'category_id',
+    ];
+
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 
     public function category() : BelongsTo

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('car_parts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('condition');
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('model_id');
             $table->unsignedBigInteger('category_id');

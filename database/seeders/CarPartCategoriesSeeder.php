@@ -20,7 +20,6 @@ class CarPartCategoriesSeeder extends Seeder
                 'children' => [
                     ['name' => 'Engine Block'],
                     ['name' => 'Pistons'],
-                    // Add more child categories as needed
                 ]
             ],
             [
@@ -28,10 +27,8 @@ class CarPartCategoriesSeeder extends Seeder
                 'children' => [
                     ['name' => 'Brake Pads'],
                     ['name' => 'Brake Calipers'],
-                    // Add more child categories as needed
                 ]
             ],
-            // Add more parent categories with children
         ];
 
         foreach ($categories as $categoryData) {
