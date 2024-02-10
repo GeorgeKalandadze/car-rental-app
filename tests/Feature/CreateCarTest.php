@@ -40,7 +40,7 @@ class CreateCarTest extends TestCase
             'category_id' => 2,
             'vin' => $vinCode,
             'fuel_type' => FuelType::toArray()[array_rand(FuelType::toArray())],
-//            'images' => $imageFiles,
+            'images' => $imageFiles,
         ];
 
         $response = $this->postJson('/api/cars/create', $carData);
@@ -57,15 +57,15 @@ class CreateCarTest extends TestCase
                 'category_id',
                 'vin_code',
                 'fuel_type',
-//                'car_images' => [
-//                    '*' => [
-//                        'id',
-//                        'car_id',
-//                        'url',
-//                        'size',
-//                        'type',
-//                    ],
-//                ],
+                'car_images' => [
+                    '*' => [
+                        'id',
+                        'car_id',
+                        'url',
+                        'size',
+                        'type',
+                    ],
+                ],
             ]]);
     }
 }

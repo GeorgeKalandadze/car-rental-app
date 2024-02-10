@@ -35,21 +35,20 @@ class CreateCarController extends Controller
                 'user_id' => $user->id,
             ]);
 
-//            $images = $data['images'];
-//            foreach ($images as $index => $image) {
-//                $imageName = $car->id  . time()  . $index . $image->getClientOriginalName();
-//                $image->storeAs('public/images', $imageName);
-//
-//                Image::create([
-//                    'car_id' => $car->id,
-//                    'url' => env('APP_URL').Storage::url('images/' . $imageName),
-//                    'size' => $image->getSize(),
-//                    'type' => $image->getMimeType(),
-//                ]);
-//            }
+            $images = $data['images'];
+            foreach ($images as $index => $image) {
+                $imageName = $car->id  . time()  . $index . $image->getClientOriginalName();
+                $image->storeAs('public/images', $imageName);
+                $car->images()->create([
+                    'car_id' => $car->id,
+                    'url' => env('APP_URL').Storage::url('images/' . $imageName),
+                    'size' => $image->getSize(),
+                    'type' => $image->getMimeType(),
+                ]);
+            }
 
             DB::commit();
-//            $car->load('images');
+            $car->load('images');
             return new CarResource($car);
         } catch (Exception $exception) {
             DB::rollBack();

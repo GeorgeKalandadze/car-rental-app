@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\CarRequest;
 use App\Http\Resources\CarResource;
 use App\Models\Car;
@@ -21,29 +22,24 @@ class UpdateCarController extends Controller
             $car = Car::findOrFail($id);
             $car->update($data);
 
-//            if (isset($data['images'])) {
-//                $existingImages = $car->images;
-//                $newImages = $data['images'];
-//
-//                foreach ($existingImages as $existingImage) {
-//                    Storage::delete($existingImage->name);
-//                    $existingImage->delete();
-//                }
-//
-//                foreach ($newImages as $index => $image) {
-//                    $imageName = $car->id . time() . $index . $image->getClientOriginalName();
-//                    $image->storeAs('public/images', $imageName);
-//
-//                    Image::create([
-//                        'car_id' => $car->id,
-//                        'name' => env('APP_URL') . Storage::url('images/' . $imageName),
-//                        'size' => $image->getSize(),
-//                        'type' => $image->getMimeType(),
-//                    ]);
-//                }
-//            }
-//
-//            $car->load('images');
+            if (isset($data['images'])) {
+                $existingImages = $car->images;
+                $imageIdsToDelete = collect($existingImages)->pluck('id')->diff(collect($data['images'])->pluck('id'));
+                Image::whereIn('id', $imageIdsToDelete)->delete();
+                foreach ($data['images'] as $index => $image) {
+                    if ($image) {
+
+                        $imageName = $car->id . '_' . time() . '_' . $image->getClientOriginalName();
+                        $imageUrl = $image->storeAs('public/images', $imageName);
+                        $car->images()->create([
+                            'url' => env('APP_URL') . Storage::url($imageUrl),
+                            'size' => $image->getSize(),
+                            'type' => $image->getClientMimeType(),
+                        ]);
+                    }
+                }
+            }
+            $car->load('images');
 
             return new CarResource($car);
         } catch (ValidationException $e) {
