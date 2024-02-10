@@ -14,7 +14,7 @@ use Tests\TestCase;
 
 class CreateCarTest extends TestCase
 {
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
 
     public function test_create_car_with_images(): void
     {

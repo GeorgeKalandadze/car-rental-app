@@ -14,16 +14,17 @@ class DeleteCarController extends Controller
     {
         try {
             // Check if the authenticated user owns the car
-            if (auth()->user()->id !== $car->user_id) {
-                return response()->json(['error' => 'You are not authorized to delete this car.'], 403);
-            }
+//            if (auth()->user()->id !== $car->user_id) {
+//                return response()->json(['error' => 'You are not authorized to delete this car.'], 403);
+//            }
 
             DB::beginTransaction();
-//            foreach ($car->images as $carImage) {
-//                $imageUrl = str_replace(env('APP_URL'), '', $carImage->url);
-//                Storage::delete('public/images/' . basename($imageUrl));
-//                $carImage->delete();
-//            }
+            foreach ($car->images as $carImage) {
+                $imageUrl = str_replace(env('APP_URL'), '', $carImage->url);
+
+                Storage::delete('public/images/' . basename($imageUrl));
+                $carImage->delete();
+            }
             $car->delete();
 
             DB::commit();
