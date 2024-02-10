@@ -14,9 +14,11 @@ class CarPart extends Model
     protected $fillable = [
         'name',
         'condition',
+        'price',
         'brand_id',
         'model_id',
         'category_id',
+        'user_id'
     ];
 
     public function images(): MorphMany

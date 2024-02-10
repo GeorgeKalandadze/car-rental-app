@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Car;
 
+use App\Http\Controllers\Controller;
 use App\Models\Car;
 use App\Notifications\CarLikedNotification;
 use Illuminate\Http\Request;

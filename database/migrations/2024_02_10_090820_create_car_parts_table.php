@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('condition');
+            $table->decimal('price', 10, 2);
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('model_id');
             $table->unsignedBigInteger('category_id');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->foreign('model_id')->references('id')->on('car_models');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 

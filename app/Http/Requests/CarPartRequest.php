@@ -26,6 +26,7 @@ class CarPartRequest extends FormRequest
         return [
             'name' => 'required|string',
             'condition' => ['required',Rule::in(Condition::toArray())],
+            'price' => 'required|numeric',
             'brand_id' => 'required|exists:brands,id',
             'model_id' => 'required|exists:car_models,id',
             'category_id' => 'required|exists:car_part_categories,id',
