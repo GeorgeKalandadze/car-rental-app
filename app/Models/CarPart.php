@@ -26,6 +26,11 @@ class CarPart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function model(): BelongsTo
+    {
+        return $this->belongsTo(CarModel::class);
+    }
+
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imageable');
