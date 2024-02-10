@@ -13,7 +13,7 @@ use Tests\TestCase;
 
 class CreateCarPartTest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
     /**
      * A basic feature test example.
      */
