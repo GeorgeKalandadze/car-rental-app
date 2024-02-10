@@ -12,4 +12,14 @@ class CarPartCategory extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function parentCategory()
+    {
+        return $this->belongsTo(CarPartCategory::class, 'parent_id');
+    }
+
+    public function childrenCategory()
+    {
+        return $this->hasMany(CarPartCategory::class, 'parent_id');
+    }
 }
