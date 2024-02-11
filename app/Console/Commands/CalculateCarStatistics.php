@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Brand;
+use App\Models\CarModel;
 use Illuminate\Console\Command;
 use App\Models\Car;
+use App\Models\Model; // Import the Model model
 
 class CalculateCarStatistics extends Command
 {
@@ -49,12 +51,14 @@ class CalculateCarStatistics extends Command
             ->first();
         $mostPopularBrandName = $mostPopularBrand ? Brand::find($mostPopularBrand)->name : 'Unknown';
 
-        $mostPopularModel = Car::select('model')
+        $mostPopularModelId = Car::select('model_id')
             ->where('brand_id', $mostPopularBrand)
-            ->groupBy('model')
+            ->groupBy('model_id')
             ->orderByRaw('COUNT(*) DESC')
-            ->pluck('model')
+            ->pluck('model_id')
             ->first();
+
+        $mostPopularModel = $mostPopularModelId ? CarModel::find($mostPopularModelId)->name : 'Unknown';
 
         $mostExpensiveCars = Car::orderBy('price', 'desc')->take(3)->get();
 
@@ -67,7 +71,7 @@ class CalculateCarStatistics extends Command
 
         $this->info('Most Expensive Cars:');
         foreach ($mostExpensiveCars as $car) {
-            $this->info('Make: ' . $car->make . ', Model: ' . $car->model . ', Price: $' . number_format($car->price, 2));
+            $this->info( ' Model: ' . $car->model . ', Price: $' . number_format($car->price, 2));
         }
     }
 }
