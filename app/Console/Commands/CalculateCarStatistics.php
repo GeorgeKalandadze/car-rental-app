@@ -6,7 +6,6 @@ use App\Models\Brand;
 use App\Models\CarModel;
 use Illuminate\Console\Command;
 use App\Models\Car;
-use App\Models\Model; // Import the Model model
 
 class CalculateCarStatistics extends Command
 {

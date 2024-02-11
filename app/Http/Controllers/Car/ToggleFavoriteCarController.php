@@ -15,12 +15,10 @@ class ToggleFavoriteCarController extends Controller
 
         if ($user->favoriteCars->contains($car)) {
             $user->favoriteCars()->detach($car);
-            // Trigger notification when the car is removed from favorites
             $car->user->notify(new CarLikedNotification($car, $user, 'removed'));
             return response()->json(['message' => 'Car removed from favorites'], 200);
         } else {
             $user->favoriteCars()->attach($car);
-            // Trigger notification when the car is added to favorites
             $car->user->notify(new CarLikedNotification($car, $user, 'added'));
             return response()->json(['message' => 'Car added to favorites'], 201);
         }
