@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
-use App\Models\CarModel;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder

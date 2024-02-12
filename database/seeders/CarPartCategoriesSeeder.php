@@ -20,14 +20,14 @@ class CarPartCategoriesSeeder extends Seeder
                 'children' => [
                     ['name' => 'Engine Block'],
                     ['name' => 'Pistons'],
-                ]
+                ],
             ],
             [
                 'name' => 'Brake System',
                 'children' => [
                     ['name' => 'Brake Pads'],
                     ['name' => 'Brake Calipers'],
-                ]
+                ],
             ],
         ];
 

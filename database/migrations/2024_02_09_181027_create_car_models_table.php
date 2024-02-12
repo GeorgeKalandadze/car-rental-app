@@ -21,4 +21,3 @@ class CreateCarModelsTable extends Migration
         Schema::dropIfExists('car_models');
     }
 }
-

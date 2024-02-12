@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CarImageResource extends JsonResource
@@ -19,7 +18,7 @@ class CarImageResource extends JsonResource
             'car_id' => $this->car_id,
             'url' => $this->url,
             'size' => $this->size,
-            'type' => $this->type
+            'type' => $this->type,
         ];
     }
 }

@@ -9,13 +9,13 @@ use Illuminate\Validation\Rule;
 
 class CarRequest extends FormRequest
 {
-
     protected function prepareForValidation()
     {
         $this->merge([
             'vin' => strtoupper(str_replace(' ', '', $this->vin)),
         ]);
     }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -36,13 +36,13 @@ class CarRequest extends FormRequest
             'year' => 'required|numeric',
             'price' => 'required|numeric',
             'mileage' => 'required|numeric',
-            'condition' => ['required',Rule::in(Condition::toArray())],
+            'condition' => ['required', Rule::in(Condition::toArray())],
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
             'images' => ['required', 'array', 'max:4'],
             'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'vin' => ['required', 'string', 'min:7', 'regex:/^[a-zA-Z0-9]+$/'],
-            'fuel_type' => ['required',Rule::in(FuelType::toArray())],
+            'fuel_type' => ['required', Rule::in(FuelType::toArray())],
         ];
     }
 
@@ -81,5 +81,4 @@ class CarRequest extends FormRequest
             'fuel_type.in' => 'არჩეული წვის ტიპი არასწორია.',
         ];
     }
-
 }

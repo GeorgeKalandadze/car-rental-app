@@ -30,7 +30,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::prefix('cars')->group(function (){
+    Route::prefix('cars')->group(function () {
         Route::get('/', GetCarController::class);
         Route::post('/create', CreateCarController::class);
         Route::put('/{id}', UpdateCarController::class);

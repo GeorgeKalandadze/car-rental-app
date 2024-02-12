@@ -18,7 +18,7 @@ class CarPart extends Model
         'brand_id',
         'model_id',
         'category_id',
-        'user_id'
+        'user_id',
     ];
 
     public function user(): BelongsTo
@@ -41,7 +41,7 @@ class CarPart extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function category() : BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(CarPartCategory::class, 'category_id');
     }

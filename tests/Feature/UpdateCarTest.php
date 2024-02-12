@@ -5,7 +5,6 @@ use App\Models\Car;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -19,7 +18,7 @@ class UpdateCarTest extends TestCase
         Sanctum::actingAs($user);
 
         $car = Car::factory()->create();
-        $vinCode = 'ABC' . uniqid();
+        $vinCode = 'ABC'.uniqid();
         $updatedData = [
             'model_id' => 2,
             'year' => '2024',
@@ -54,8 +53,8 @@ class UpdateCarTest extends TestCase
                         'url',
                         'size',
                         'type',
-                    ]
-                ]
+                    ],
+                ],
             ]]);
     }
 }

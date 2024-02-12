@@ -2,11 +2,11 @@
 
 use App\Models\Car;
 use App\Models\User;
+use App\Notifications\CarLikedNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Notification;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\CarLikedNotification;
 
 class ToggleFavoriteCarTest extends TestCase
 {

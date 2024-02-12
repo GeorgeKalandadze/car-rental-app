@@ -15,7 +15,7 @@ enum FuelType: string
             self::PETROL,
             self::DIESEL,
             self::ELECTRIC,
-            self::GASOLINE
+            self::GASOLINE,
         ];
     }
 }

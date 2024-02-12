@@ -26,7 +26,7 @@ class CarPartFactory extends Factory
             'price' => $this->faker->numberBetween(100, 2000),
             'condition' => $this->faker->randomElement(['new', 'used']),
             'brand_id' => 1,
-            'category_id' => 1
+            'category_id' => 1,
         ];
     }
 }

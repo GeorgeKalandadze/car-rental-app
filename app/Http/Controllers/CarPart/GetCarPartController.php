@@ -15,7 +15,7 @@ class GetCarPartController extends Controller
         $query = CarPart::query();
 
         if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->input('name') . '%');
+            $query->where('name', 'like', '%'.$request->input('name').'%');
         }
 
         if ($request->has('condition')) {
@@ -43,4 +43,3 @@ class GetCarPartController extends Controller
         return CarPartResource::collection($carParts);
     }
 }
-

@@ -30,10 +30,10 @@ class UpdateCarPartController extends Controller
                 foreach ($data['images'] as $index => $image) {
                     if ($image) {
 
-                        $imageName = $carPart->id . '_' . time() . '_' . $image->getClientOriginalName();
+                        $imageName = $carPart->id.'_'.time().'_'.$image->getClientOriginalName();
                         $imageUrl = $image->storeAs('public/images', $imageName);
                         $carPart->images()->create([
-                            'url' => env('APP_URL') . Storage::url($imageUrl),
+                            'url' => env('APP_URL').Storage::url($imageUrl),
                             'size' => $image->getSize(),
                             'type' => $image->getClientMimeType(),
                         ]);
@@ -41,9 +41,10 @@ class UpdateCarPartController extends Controller
                 }
             }
             $carPart->load('images');
+
             return new CarPartResource($carPart);
 
-        }catch (ValidationException $e) {
+        } catch (ValidationException $e) {
             return response()->json($e->errors(), 422);
         } catch (\Exception $e) {
             return response()->json(['message' => 'An error occurred during the update process.'], 500);

@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Brand;
+use App\Models\Car;
 use App\Models\CarModel;
 use Illuminate\Console\Command;
-use App\Models\Car;
 
 class CalculateCarStatistics extends Command
 {
@@ -62,15 +62,15 @@ class CalculateCarStatistics extends Command
         $mostExpensiveCars = Car::orderBy('price', 'desc')->take(3)->get();
 
         $this->info('Car Statistics:');
-        $this->info('Total Cars: ' . $totalCars);
-        $this->info('Average Price: $' . number_format($averagePrice, 2));
-        $this->info('Average Mileage: ' . number_format($averageMileage, 2) . ' miles');
-        $this->info('Most Popular Brand: ' . $mostPopularBrandName);
-        $this->info('Most Popular Model of ' . $mostPopularBrandName . ': ' . $mostPopularModel);
+        $this->info('Total Cars: '.$totalCars);
+        $this->info('Average Price: $'.number_format($averagePrice, 2));
+        $this->info('Average Mileage: '.number_format($averageMileage, 2).' miles');
+        $this->info('Most Popular Brand: '.$mostPopularBrandName);
+        $this->info('Most Popular Model of '.$mostPopularBrandName.': '.$mostPopularModel);
 
         $this->info('Most Expensive Cars:');
         foreach ($mostExpensiveCars as $car) {
-            $this->info( ' Model: ' . $car->model . ', Price: $' . number_format($car->price, 2));
+            $this->info(' Model: '.$car->model.', Price: $'.number_format($car->price, 2));
         }
     }
 }

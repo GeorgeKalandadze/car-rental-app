@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CarPartRequest;
 use App\Http\Resources\CarPartResource;
 use App\Models\CarPart;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,10 +34,10 @@ class CreateCarPartController extends Controller
 
             $images = $data['images'];
             foreach ($images as $index => $image) {
-                $imageName = $carPart->id  . time()  . $index . $image->getClientOriginalName();
+                $imageName = $carPart->id.time().$index.$image->getClientOriginalName();
                 $image->storeAs('public/images', $imageName);
                 $carPart->images()->create([
-                    'url' => env('APP_URL').Storage::url('images/' . $imageName),
+                    'url' => env('APP_URL').Storage::url('images/'.$imageName),
                     'size' => $image->getSize(),
                     'type' => $image->getMimeType(),
                 ]);
@@ -45,8 +45,9 @@ class CreateCarPartController extends Controller
 
             DB::commit();
             $carPart->load('images');
+
             return new CarPartResource($carPart);
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             Db::rollBack();
             throw $exception;
         }

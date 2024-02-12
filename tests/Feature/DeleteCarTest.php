@@ -24,6 +24,4 @@ class DeleteCarTest extends TestCase
         $response->assertStatus(200)
             ->assertJson(['message' => 'Car deleted successfully']);
     }
-
-
 }

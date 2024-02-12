@@ -19,12 +19,11 @@ class CarFactory extends Factory
      * @return array<string, mixed>
      */
     protected $model = Car::class;
+
     protected function generateVinCode(): string
     {
-        return $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit . $this->faker->randomLetter . $this->faker->randomLetter . $this->faker->randomDigit . $this->faker->randomDigit;
+        return $this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomDigit.$this->faker->randomDigit.$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomDigit.$this->faker->randomDigit.$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomDigit.$this->faker->randomDigit.$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomDigit.$this->faker->randomDigit;
     }
-
-
 
     public function definition(): array
     {
@@ -33,6 +32,7 @@ class CarFactory extends Factory
         $brand = Brand::inRandomOrder()->first();
 
         $model = $brand->carModels()->inRandomOrder()->first();
+
         return [
             'user_id' => $user->id,
             'model_id' => $model->id,
@@ -43,9 +43,8 @@ class CarFactory extends Factory
             'brand_id' => $brand->id,
             'category_id' => 1,
             'vin' => $this->generateVinCode(),
-            'fuel_type' => $this->faker->randomElement(FuelType::toArray())
+            'fuel_type' => $this->faker->randomElement(FuelType::toArray()),
         ];
-
 
     }
 }

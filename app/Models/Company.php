@@ -18,6 +18,4 @@ class Company extends Model
         'website',
         'description',
     ];
-
-
 }

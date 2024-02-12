@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Models\CarPart;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -14,6 +12,7 @@ use Tests\TestCase;
 class UpdateCarPartTest extends TestCase
 {
     use DatabaseTransactions;
+
     /**
      * A basic feature test example.
      */

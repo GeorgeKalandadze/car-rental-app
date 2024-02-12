@@ -32,6 +32,7 @@ class GetCarController extends Controller
         }
 
         $filteredCars = $cars->get();
+
         return response()->json($filteredCars);
     }
 }

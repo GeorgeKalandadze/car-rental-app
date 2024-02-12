@@ -29,10 +29,10 @@ class UpdateCarController extends Controller
                 foreach ($data['images'] as $index => $image) {
                     if ($image) {
 
-                        $imageName = $car->id . '_' . time() . '_' . $image->getClientOriginalName();
+                        $imageName = $car->id.'_'.time().'_'.$image->getClientOriginalName();
                         $imageUrl = $image->storeAs('public/images', $imageName);
                         $car->images()->create([
-                            'url' => env('APP_URL') . Storage::url($imageUrl),
+                            'url' => env('APP_URL').Storage::url($imageUrl),
                             'size' => $image->getSize(),
                             'type' => $image->getClientMimeType(),
                         ]);
