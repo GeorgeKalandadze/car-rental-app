@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Car::class, 'car_user', 'user_id', 'car_id')->withTimestamps();
     }
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }

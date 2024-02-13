@@ -19,4 +19,9 @@ class Company extends Model
         'description',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }
