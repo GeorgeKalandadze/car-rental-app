@@ -10,6 +10,7 @@ use App\Http\Controllers\CarPart\CreateCarPartController;
 use App\Http\Controllers\CarPart\DeleteCarPartController;
 use App\Http\Controllers\CarPart\GetCarPartController;
 use App\Http\Controllers\CarPart\UpdateCarPartController;
+use App\Http\Controllers\Company\CreateCompanyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/create', CreateCarPartController::class);
         Route::put('/{id}', UpdateCarPartController::class);
         Route::delete('/{carPart}', DeleteCarPartController::class);
+    });
+
+    Route::prefix('company')->group(function (){
+        Route::post('/create', CreateCompanyController::class);
     });
 });
 
