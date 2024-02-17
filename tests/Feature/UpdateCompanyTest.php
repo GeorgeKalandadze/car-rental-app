@@ -5,14 +5,13 @@ namespace Tests\Feature;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class UpdateCompanyTest extends TestCase
 {
     use DatabaseTransactions;
+
     /**
      * A basic feature test example.
      */

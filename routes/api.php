@@ -11,6 +11,7 @@ use App\Http\Controllers\CarPart\DeleteCarPartController;
 use App\Http\Controllers\CarPart\GetCarPartController;
 use App\Http\Controllers\CarPart\UpdateCarPartController;
 use App\Http\Controllers\Company\CreateCompanyController;
+use App\Http\Controllers\Company\DeleteCompanyController;
 use App\Http\Controllers\Company\UpdateCompanyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('companies')->group(function () {
         Route::post('/', CreateCompanyController::class);
         Route::put('/{company}', UpdateCompanyController::class);
+        Route::delete('/{company}', DeleteCompanyController::class);
     });
 });
 
