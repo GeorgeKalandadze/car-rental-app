@@ -3,14 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class CreateCompanyTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     /**
      * A basic feature test example.
@@ -31,7 +31,7 @@ class CreateCompanyTest extends TestCase
             'description' => 'This is a test company',
         ];
 
-        $response = $this->postJson('/api/company/create', $data);
+        $response = $this->postJson('/api/companies/', $data);
 
         $response->assertStatus(201)
             ->assertJson([
